@@ -1,0 +1,21 @@
+How to resolve phpmyadmin - count(): Parameter must be an array or an object that implements Countable
+
+
+
+Terminal > root > sudo gedit /usr/share/phpmyadmin/libraries/sql.lib.php
+
+FIND & REPLACE below function... (keep backup of original files)
+
+function PMA_isRememberSortingOrder($analyzed_sql_results)
+{
+    return $GLOBALS['cfg']['RememberSorting']
+        && ! ($analyzed_sql_results['is_count']
+            || $analyzed_sql_results['is_export']
+            || $analyzed_sql_results['is_func']
+            || $analyzed_sql_results['is_analyse'])
+        && $analyzed_sql_results['select_from']
+        && ((empty($analyzed_sql_results['select_expr']))
+                || count($analyzed_sql_results['select_expr']) == 1
+            && ($analyzed_sql_results['select_expr'][0] == '*'))
+    && count($analyzed_sql_results['select_tables']) == 1;
+}
