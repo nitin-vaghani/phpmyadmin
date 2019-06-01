@@ -1,0 +1,8 @@
+This error can drive you crazy.
+It’s a security feature, to prevent people from leaving themselves logged in to PHPMyAdmin from a public computer.
+
+Getting rid of this error is fairly simple however,
+just add this line to the end of the “config.inc.php” in your PHPMyAdmin directory:
+
+$cfg['LoginCookieValidity'] = 60 * 60 * 8;
+This will set the timeout to 8 hours, instead of 1440 seconds (24 minutes).
