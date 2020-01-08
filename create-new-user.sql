@@ -1,0 +1,14 @@
+#MySql Create User using terminal
+
+CREATE DATABASE abcd;
+
+DROP USER 'abcd'@'localhost';
+
+CREATE USER 'abcd'@'%' IDENTIFIED BY 'passWordHere';
+GRANT ALL PRIVILEGES ON *.* TO 'abcd'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+CREATE USER 'admin'@'%' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
