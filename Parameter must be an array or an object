@@ -19,3 +19,27 @@ function PMA_isRememberSortingOrder($analyzed_sql_results)
             && ($analyzed_sql_results['select_expr'][0] == '*'))
     && count($analyzed_sql_results['select_tables']) == 1;
 }
+
+
+
+phpmyadmin - count(): Parameter must be an array or an object that implements Countable
+
+
+open this file /usr/share/phpmyadmin/libraries/plugin_interface.lib.php
+
+sudo nano /usr/share/phpmyadmin/libraries/plugin_interface.lib.php
+
+Find : if ($options != null && count($options) > 0) {
+
+Ctrl+w : if ($options != null && count($options) > 0) {
+
+replace with following code
+
+if ($options != null && count((array)$options) > 0) {
+
+now save and restart the server
+
+sudo /etc/init.d/apache2 restart
+
+
+
