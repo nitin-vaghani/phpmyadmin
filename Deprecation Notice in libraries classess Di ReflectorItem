@@ -1,0 +1,5 @@
+#Deprecation Notice in ./libraries/classes/Di/ReflectorItem.php#82
+
+sudo gedit config.inc.php 
+
+$cfg['SendErrorReports'] = 'never';
